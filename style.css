@@ -1118,3 +1118,20 @@ body.light-mode .icon-btn:hover {
         min-height: 0;
     }
 }
+/* 1. Contenedor principal de cuadrícula (Grid) */
+.cards-view {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto: 1 columna (móvil) */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 15px; /* Padding mínimo para evitar cortes */
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+/* 2. Adaptación para Escritorio (> 768px) */
+@media (min-width: 769px) {
+    .cards-view {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+        padding: 30px; /* Un poco más de aire en escritorio */
+    }
+}
