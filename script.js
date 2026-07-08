@@ -47,7 +47,25 @@ if ('serviceWorker' in navigator) {
                 console.log('Error al registrar Service Worker:', error);
             });
     });
+
+    // FORZAR ACTUALIZACIÓN DEL SERVICE WORKER
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+        registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+            installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                        console.log('Nueva versión detectada. Recargando para aplicar cambios...');
+                        window.location.reload(); // Esto fuerza la actualización visual
+                    }
+                }
+            };
+        };
+    });
 }
+}
+
 
 // Inicialización de tarjetas con elementos avanzados
 configs.forEach(m => {
