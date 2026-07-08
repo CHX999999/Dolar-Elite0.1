@@ -30,10 +30,9 @@ const notification = document.getElementById('notification');
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-        if (savedTheme === 'light') document.body.classList.add('light-mode');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        document.body.classList.add('light-mode');
-    }
+if (savedTheme === 'light') document.body.classList.add('light');
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+document.body.classList.add('light');    }
 }
 initTheme();
 
